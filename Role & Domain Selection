@@ -1,0 +1,17 @@
+roles = ["Software Engineer", "Product Manager", "Data Analyst"]
+domains = ["Frontend", "Backend", "Machine Learning", "System Design"]
+
+def get_user_input():
+    print("Please select your role:")
+    for i, role in enumerate(roles, 1):
+        print(f"{i}. {role}")
+    role_choice = int(input("Enter the number corresponding to your role: ")) - 1
+    role = roles[role_choice]
+    
+    print("\nPlease select your domain (optional):")
+    for i, domain in enumerate(domains, 1):
+        print(f"{i}. {domain}")
+    domain_choice = int(input("Enter the number corresponding to your domain: ")) - 1
+    domain = domains[domain_choice] if domain_choice >= 0 else None
+    
+    return role, domain
