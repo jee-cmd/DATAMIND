@@ -1,0 +1,24 @@
+Final Summary Report
+After the interview session, the bot will generate a detailed report that includes:
+Areas of Strength: Highlights of the user's strong responses.
+Areas to Improve: Constructive feedback on weaker answers.
+Suggested Resources: Links to tutorials, articles, or courses for improvement.
+Final Score: An overall rating (e.g., 8/10).
+Streamlit provides an intuitive way to build interactive web applications. Here's how you can structure the UI
+import streamlit as st
+
+def display_summary_report(report_data):
+    st.title("Interview Summary Report")
+    
+    st.header("Areas of Strength")
+    st.write(report_data['strengths'])
+    
+    st.header("Areas to Improve")
+    st.write(report_data['improvements'])
+    
+    st.header("Suggested Resources")
+    for resource in report_data['resources']:
+        st.write(f"- {resource}")
+    
+    st.header("Final Score")
+    st.write(f"{report_data['score']}/10")
