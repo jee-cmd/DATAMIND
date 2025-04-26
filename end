@@ -1,0 +1,13 @@
+ Deployment and Bonus Features
+Voice Input/Output: Integrate with SpeechRecognition and pyttsx3 for voice interactions.
+
+Custom Question Sets: Allow users to select question sets (e.g., FAANG-style, STAR-based).
+
+Leaderboard: Implement a scoring system to track user progress over time.
+
+ References:
+Streamlit Documentation
+
+OpenAI API Documentation
+
+Interview Analyzer GitHub
