@@ -1,0 +1,7 @@
+def conduct_interview(questions):
+    responses = []
+    for question in questions:
+        print(f"\nQuestion: {question}")
+        response = input("Your response: ")
+        responses.append(response)
+    return responses
