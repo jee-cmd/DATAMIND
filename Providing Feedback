@@ -1,0 +1,5 @@
+def provide_feedback(feedback, scores):
+    for i, (fb, score) in enumerate(zip(feedback, scores), 1):
+        print(f"\nFeedback for Answer {i}:")
+        print(fb)
+        print(f"Score: {score}/100")
