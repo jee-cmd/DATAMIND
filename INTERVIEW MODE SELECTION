@@ -1,0 +1,7 @@
+2. Interview Mode Selection:-
+Offer users the choice between technical and behavioral interview modes.
+modes = ["Technical Interview", "Behavioral Interview"]
+
+def select_interview_mode():
+    mode = input(f"Select interview mode from {modes}: ")
+    return mode
