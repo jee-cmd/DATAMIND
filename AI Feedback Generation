@@ -1,0 +1,16 @@
+Use OpenAI's GPT-3.5 to analyze interview responses and generate personalized feedback:
+import openai
+
+openai.api_key = 'your-api-key'
+
+def generate_feedback(responses):
+    feedback = []
+    for response in responses:
+        prompt = f"Evaluate the following interview response and provide feedback: {response}"
+        evaluation = openai.Completion.create(
+            engine="text-davinci-003",
+            prompt=prompt,
+            max_tokens=150
+        )
+        feedback.append(evaluation.choices[0].text.strip())
+    return feedback
