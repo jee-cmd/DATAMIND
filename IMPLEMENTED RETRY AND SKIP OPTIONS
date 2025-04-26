@@ -1,0 +1,79 @@
+import openai
+
+openai.api_key = 'your-openai-api-key'
+
+roles = ["Software Engineer", "Product Manager", "Data Analyst"]
+domains = ["Frontend", "Backend", "Machine Learning", "System Design"]
+modes = ["Technical Interview", "Behavioral Interview"]
+
+def get_user_input():
+    print("Please select your role:")
+    for i, role in enumerate(roles, 1):
+        print(f"{i}. {role}")
+    role_choice = int(input("Enter the number corresponding to your role: ")) - 1
+    role = roles[role_choice]
+    
+    print("\nPlease select your domain (optional):")
+    for i, domain in enumerate(domains, 1):
+        print(f"{i}. {domain}")
+    domain_choice = int(input("Enter the number corresponding to your domain: ")) - 1
+    domain = domains[domain_choice] if domain_choice >= 0 else None
+    
+    print("\nPlease select the interview mode:")
+    for i, mode in enumerate(modes, 1):
+        print(f"{i}. {mode}")
+    mode_choice = int(input("Enter the number corresponding to your choice: ")) - 1
+    mode = modes[mode_choice]
+    
+    return role, domain, mode
+
+def generate_questions(role, domain, mode):
+    prompt = f"Generate {mode} questions for a {role} in the {domain} domain."
+    response = openai.Completion.create(
+        engine="text-davinci-003",
+        prompt=prompt,
+        max_tokens=150
+    )
+    questions = response.choices[0].text.strip().split('\n')
+    return questions
+
+def evaluate_answer(answer, mode):
+    if mode == "Technical Interview":
+        return f"Technical Evaluation: {answer}"
+    else:
+        return f"Behavioral Evaluation: {answer}"
+
+def conduct_interview(questions, mode):
+    responses = []
+    for i, question in enumerate(questions, 1):
+        while True:
+            print(f"\nQuestion {i}: {question}")
+            response = input("Your response: ")
+            evaluation = evaluate_answer(response, mode)
+            print(f"Evaluation: {evaluation}")
+            
+            action = input("Would you like to [r]etry, [s]kip, or [c]ontinue? ").lower()
+            if action == 'r':
+                print("Retrying the question...")
+            elif action == 's':
+                print("Skipping to the next question...")
+                break
+            elif action == 'c':
+                responses.append((response, evaluation))
+                break
+            else:
+                print("Invalid input. Please choose 'r' to retry, 's' to skip, or 'c' to continue.")
+                continue
+    return responses
+
+def main():
+    role, domain, mode = get_user_input()
+    questions = generate_questions(role, domain, mode)
+    responses = conduct_interview(questions, mode)
+    print("\nInterview Summary:")
+    for i, (response, evaluation) in enumerate(responses, 1):
+        print(f"\nAnswer {i}: {response}")
+        print(f"Evaluation: {evaluation}")
+
+if __name__ == "__main__":
+    main()
