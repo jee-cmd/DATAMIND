@@ -1,0 +1,11 @@
+def main():
+    role, domain = get_user_input()
+    mode = select_interview_mode()
+    questions = generate_questions(role, domain, mode)
+    responses = conduct_interview(questions)
+    feedback = evaluate_responses(responses, mode)
+    scores = [score_answer(ans, mode) for ans in responses]
+    provide_feedback(feedback, scores)
+
+if __name__ == "__main__":
+    main()
