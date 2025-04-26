@@ -1,0 +1,14 @@
+import pandas as pd
+import json
+
+def save_session_data(responses, feedback, scores):
+    session_data = pd.DataFrame({
+        'response': responses,
+        'feedback': feedback,
+        'score': scores
+    })
+    session_data.to_csv('session_summary.csv', index=False)
+
+def export_summary(report_data):
+    with open('summary_report.json', 'w') as f:
+        json.dump(report_data, f)
