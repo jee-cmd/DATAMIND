@@ -1,0 +1,8 @@
+def score_answer(answer, mode):
+    if mode == "Technical Interview":
+        # Implement scoring logic for technical answers
+        score = 85  # Placeholder score
+    else:
+        # Implement scoring logic for behavioral answers
+        score = 90  # Placeholder score
+    return score
