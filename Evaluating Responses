@@ -1,0 +1,17 @@
+def evaluate_responses(responses, mode):
+    feedback = []
+    for response in responses:
+        if mode == "Technical Interview":
+            evaluation = evaluate_technical_answer(response)
+        else:
+            evaluation = evaluate_behavioral_answer(response)
+        feedback.append(evaluation)
+    return feedback
+
+def evaluate_technical_answer(answer):
+    # Placeholder for technical evaluation logic
+    return f"Technical Evaluation: {answer}"
+
+def evaluate_behavioral_answer(answer):
+    # Placeholder for behavioral evaluation logic
+    return f"Behavioral Evaluation: {answer}"
