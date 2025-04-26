@@ -1,0 +1,15 @@
+Based on the user's selections, generate relevant interview questions.
+import openai
+
+openai.api_key = 'your-openai-api-key'
+
+def generate_questions(role, domain, mode):
+    prompt = f"Generate {mode} questions for a {role} in the {domain} domain."
+    response = openai.Completion.create(
+        engine="text-davinci-003",
+        prompt=prompt,
+        max_tokens=150
+    )
+    questions = response.choices[0].text.strip().split('\n')
+    return questions
+
